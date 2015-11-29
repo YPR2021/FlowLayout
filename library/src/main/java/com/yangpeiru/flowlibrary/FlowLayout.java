@@ -146,8 +146,8 @@ public class FlowLayout
 
         /**
          * 用来判断是否可以添加子控件的方法
-         * @param view
-         * @return
+         * @param view 子控件
+         * @return 判断子控件的宽是否大于行的宽
          */
         private boolean canAdd(View view) {
             //如果一个子控件都没有,一定要加进去,不然哪个条目都加不进去
@@ -156,15 +156,13 @@ public class FlowLayout
             }
 
             int childWidth = view.getMeasuredWidth();
-            if (mLineUsedWidth + mSpace + childWidth <= mLineMaxWidth) {
-                return true;
-            }
-            return false;
+
+            return (mLineUsedWidth + mSpace + childWidth <= mLineMaxWidth);
         }
 
         /**
          * 添加子控件的方法,在这之前先判断是否可以添加,用canAdd方法
-         * @param view
+         * @param view 子控件
          */
         private void addChild(View view) {
             int childWidth  = view.getMeasuredWidth();//子控件的宽
@@ -187,8 +185,8 @@ public class FlowLayout
 
         /**
          * 给行布局的方法
-         * @param left
-         * @param top
+         * @param left 每个子控件的距离父控件的左边距离
+         * @param top 每行的高
          */
         public void layout(int left, int top) {
 
